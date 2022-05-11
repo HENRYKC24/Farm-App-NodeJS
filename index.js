@@ -1,5 +1,6 @@
 // const fs = require('fs');
 const http = require('http');
+const url = require('url');
 
 
 ///////////////////////////////
@@ -27,7 +28,17 @@ const http = require('http');
 ///////// RUN SERVER
 
 const server = http.createServer((req, res) => {
-  res.end('Data from the server');
+  const pathName = req.url;
+  if (pathName === '/' || pathName === '/overview') {
+    res.end('This is the overview page');
+  } else if (pathName === '/products') {
+    res.end('You are in the products page.')
+  } else {
+    res.writeHead(400, {
+      'Content-type': 'text/html'
+    });
+    res.end('<h1>Page Not Found.</h1>');
+  }
 });
 
 server.listen(4000, '127.0.0.1', () => {
