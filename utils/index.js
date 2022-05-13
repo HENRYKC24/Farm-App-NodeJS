@@ -8,11 +8,9 @@ module.exports.replaceVariables = (data, cardHTML) => {
   filledCard = filledCard.replace(/{%PRICE%}/g, data.price);
   filledCard = filledCard.replace(/{%PRODUCT_ID%}/g, data.id);
   if (!data.organic) {
-    filledCard = filledCard.replace(/{%NOT_ORGANIC%}/g, 'not-organic');
+    filledCard = filledCard.replace(/{%NOT_ORGANIC%}/g, "not-organic");
   } else {
-    filledCard = filledCard.replace(/{%NOT_ORGANIC%}/g, '');
+    filledCard = filledCard.replace(/{%NOT_ORGANIC%}/g, "");
   }
   return filledCard;
 };
-
-// export default replaceVariables;
